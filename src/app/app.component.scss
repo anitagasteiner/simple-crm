@@ -1,6 +1,6 @@
 .main-container {
     height: 100dvh;
-    background-color: wheat;
+    // background-color: grey;
 }
 
 .sidenav {
@@ -9,7 +9,7 @@
 }
 
 .logo-container {
-    border-bottom: 1px solid grey;
+    // border-bottom: 1px solid grey;
     padding-left: 16px;
     padding-right: 16px;
     min-height: 56px;
@@ -20,7 +20,11 @@
 mat-toolbar, mat-toolbar-row {
     min-height: 56px;
     height: 56px;
+}
 
+mat-toolbar-row {
+    display: flex;
+    gap: 16px;
 }
 
 .navbar-container {
@@ -36,8 +40,13 @@ mat-toolbar, mat-toolbar-row {
     padding-left: 16px;
     padding-right: 16px;
     height: 48px;
-    &:hover {
-        color: black;
-        background-color: grey;
-    }
+    // &:hover {
+    //     color: black;
+    //     background-color: grey;
+    // }
+}
+
+.router-container {
+    padding-left: 56px;
+    padding-top: 36px;
 }

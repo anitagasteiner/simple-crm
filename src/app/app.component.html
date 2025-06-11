@@ -3,21 +3,23 @@
   <mat-drawer #drawer class="sidenav" mode="side" opened>
     <div class="logo-container">LOGO</div>
     <ul class="navbar-container">
-      <li class="navbar-item pointer"><mat-icon>dashboard</mat-icon>Dashboard</li>
-      <li class="navbar-item pointer"><mat-icon>person</mat-icon>User</li>
+      <li routerLink="" class="navbar-item pointer"><mat-icon>dashboard</mat-icon>Dashboard</li>
+      <li routerLink="user" class="navbar-item pointer"><mat-icon>person</mat-icon>User</li>
       <li class="navbar-item pointer">...</li>
     </ul>
   </mat-drawer>
 
-  <div>
-    <mat-toolbar>
-      <mat-toolbar-row>
-        <button class="pointer" matIconButton (click)="drawer.toggle()">
-          <mat-icon>menu</mat-icon>
-        </button>
-        <span>Simple CRM</span>
-      </mat-toolbar-row>
-    </mat-toolbar>   
+  <mat-toolbar>
+    <mat-toolbar-row>
+      <button mat-mini-fab class="pointer" (click)="drawer.toggle()" matTooltip="Toggle navbar" [matTooltipPosition]="'below'">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span>Simple CRM</span>
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+  <div class="router-container">
+    <router-outlet></router-outlet>
   </div>
 
 </mat-drawer-container>
