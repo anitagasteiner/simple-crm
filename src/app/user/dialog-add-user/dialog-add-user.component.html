@@ -1,3 +1,7 @@
+@if (loading) {
+  <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+}
+
 <h2 mat-dialog-title>Add user</h2>
 
 <mat-dialog-content>
@@ -6,7 +10,7 @@
 
     <mat-form-field>
       <mat-label>First name</mat-label>
-      <input matInput [(ngModel)]="user.firstName"> <!--NOTE - Eckige Klammer bedeutet Input, runde Klammer Output; bei ngModel handelt es sich um Two-Way-Binding, daher beide Klammern. -->
+      <input [disabled]="loading" matInput [(ngModel)]="user.firstName"> <!--NOTE - Eckige Klammer bedeutet Input, runde Klammer Output; bei ngModel handelt es sich um Two-Way-Binding, daher beide Klammern. -->
     </mat-form-field>
 
     <mat-form-field>
@@ -56,3 +60,7 @@
   <!-- The mat-dialog-close directive optionally accepts a value as a result for the dialog. -->
   <button mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="saveUser()">Save</button>
 </mat-dialog-actions>
+
+@if (loading) {
+  <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+}

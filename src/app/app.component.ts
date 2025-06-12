@@ -6,8 +6,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatDividerModule } from '@angular/material/divider';
-import { collection, collectionData, Firestore } from '@angular/fire/firestore';
-import { AsyncPipe } from '@angular/common';
+// import { AsyncPipe } from '@angular/common';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -20,8 +19,8 @@ import { Observable } from 'rxjs';
     MatIconModule,
     MatButtonModule,
     MatTooltipModule,
-    MatDividerModule,
-    AsyncPipe
+    MatDividerModule
+    // AsyncPipe
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
@@ -29,13 +28,5 @@ import { Observable } from 'rxjs';
 export class AppComponent {
 
   title = 'simple-crm';
-
-  firestore: Firestore = inject(Firestore);
-  users$: Observable<any[]>;
-
-  constructor() {
-    const aCollection = collection(this.firestore, 'users');
-    this.users$ = collectionData(aCollection);
-  }
 
 }
