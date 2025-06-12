@@ -6,7 +6,7 @@
 
     <mat-form-field>
       <mat-label>First name</mat-label>
-      <input matInput [(ngModel)]="user.firstName"> <!-- Eckige Klammer bedeutet Input, runde Klammer Output; bei ngModel handelt es sich um Two-Way-Binding, daher beide Klammern. -->
+      <input matInput [(ngModel)]="user.firstName"> <!--NOTE - Eckige Klammer bedeutet Input, runde Klammer Output; bei ngModel handelt es sich um Two-Way-Binding, daher beide Klammern. -->
     </mat-form-field>
 
     <mat-form-field>
@@ -18,7 +18,7 @@
 
   <mat-form-field>
     <mat-label>Birth date</mat-label>
-    <input matInput [matDatepicker]="picker" [(ngModel)]="user.birthDate">
+    <input matInput [matDatepicker]="picker" [(ngModel)]="birthDate">
     <mat-hint>MM/DD/YYYY</mat-hint>
     <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
@@ -30,7 +30,7 @@
 
     <mat-form-field>
       <mat-label>Street + number</mat-label>
-      <input matInput [(ngModel)]="user.address">
+      <input matInput [(ngModel)]="user.street">
     </mat-form-field>
 
     <div class="city">
@@ -54,5 +54,5 @@
 <mat-dialog-actions>
   <button mat-button mat-dialog-close>Cancel</button>
   <!-- The mat-dialog-close directive optionally accepts a value as a result for the dialog. -->
-  <button mat-button [mat-dialog-close]="true">Save</button>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="saveUser()">Save</button>
 </mat-dialog-actions>

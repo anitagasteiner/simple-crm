@@ -1,4 +1,4 @@
-import { Component, inject, model } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { provideNativeDateAdapter } from '@angular/material/core';
@@ -28,17 +28,21 @@ import { User } from '../../../models/user.class';
 export class DialogAddUserComponent {
 
   user: User = new User();
+  birthDate: Date;
 
   readonly dialogRef = inject(MatDialogRef<DialogAddUserComponent>);
-  // readonly data = {
-  //   animal: '',
-  //   name: ''
-  // }
-  // readonly animal = model(this.data.animal);
-  // name: any;
+
+  constructor() {
+    this.birthDate = new Date();
+  }
 
   onNoClick(): void {
     this.dialogRef.close();
+  }
+
+  saveUser() {
+    this.user.birthDate = this.birthDate.getTime(); //NOTE - Variable wird hinzugefügt, aber mit Timestamp.
+    console.log('Current user is: ', this.user);
   }
 
 }

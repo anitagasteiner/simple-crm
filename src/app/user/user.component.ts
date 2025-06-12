@@ -28,8 +28,6 @@ export class UserComponent {
 
   user: User = new User();
 
-  // readonly animal = signal('');
-  // readonly name = model('');
   readonly dialog = inject(MatDialog);
 
   openDialogAddUser(): void {
