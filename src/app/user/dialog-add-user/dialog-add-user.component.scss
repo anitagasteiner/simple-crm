@@ -1,0 +1,15 @@
+mat-dialog-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.names, .city {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+}
+
+.address {
+    display: flex;
+    flex-direction: column;
+}
