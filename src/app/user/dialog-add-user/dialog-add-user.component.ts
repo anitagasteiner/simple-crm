@@ -6,6 +6,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatDialogActions, MatDialogClose, MatDialogContent, MatDialogRef, MatDialogTitle } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { User } from '../../../models/user.class';
 
 @Component({
   selector: 'app-dialog-add-user',
@@ -26,13 +27,15 @@ import { MatInputModule } from '@angular/material/input';
 })
 export class DialogAddUserComponent {
 
+  user: User = new User();
+
   readonly dialogRef = inject(MatDialogRef<DialogAddUserComponent>);
-  readonly data = {
-    animal: '',
-    name: ''
-  }
-  readonly animal = model(this.data.animal);
-  name: any;
+  // readonly data = {
+  //   animal: '',
+  //   name: ''
+  // }
+  // readonly animal = model(this.data.animal);
+  // name: any;
 
   onNoClick(): void {
     this.dialogRef.close();

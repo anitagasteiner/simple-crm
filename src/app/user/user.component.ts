@@ -8,6 +8,7 @@ import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogAddUserComponent } from './dialog-add-user/dialog-add-user.component';
+import { User } from '../../models/user.class';
 
 @Component({
   selector: 'app-user',
@@ -25,18 +26,20 @@ import { DialogAddUserComponent } from './dialog-add-user/dialog-add-user.compon
 })
 export class UserComponent {
 
-  readonly animal = signal('');
-  readonly name = model('');
+  user: User = new User();
+
+  // readonly animal = signal('');
+  // readonly name = model('');
   readonly dialog = inject(MatDialog);
 
   openDialogAddUser(): void {
     const dialogRef = this.dialog.open(DialogAddUserComponent, {
-      data: {name: this.name(), animal: this.animal()},
+      // data: {name: this.name(), animal: this.animal()},
     });
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed.');
       if (result !== undefined) {
-        this.animal.set(result);
+        // this.animal.set(result);
       }
     });
   }
