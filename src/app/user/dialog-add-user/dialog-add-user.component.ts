@@ -53,7 +53,6 @@ export class DialogAddUserComponent {
 
   async saveUser() {
     this.user.birthDate = this.birthDate.getTime(); //NOTE - Variable wird hinzugefügt, aber mit Timestamp.
-    console.log('Current user is: ', this.user);
     this.loading = true;
     await this.addData('users', this.user.toJSON());
     this.loading = false;
