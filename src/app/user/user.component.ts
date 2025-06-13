@@ -11,6 +11,10 @@ import { DialogAddUserComponent } from './dialog-add-user/dialog-add-user.compon
 import { User } from '../../models/user.class';
 import { DialogUserAddedComponent } from './dialog-user-added/dialog-user-added.component';
 import { MatCardModule } from '@angular/material/card';
+import { MatTableModule } from '@angular/material/table';
+import { collection, collectionData, Firestore } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
+import { DatePipe, } from '@angular/common';
 
 @Component({
   selector: 'app-user',
@@ -22,17 +26,29 @@ import { MatCardModule } from '@angular/material/card';
     MatFormFieldModule,
     MatInputModule,
     FormsModule,
-    MatCardModule
+    MatCardModule,
+    MatTableModule,
+    DatePipe
   ],
   templateUrl: './user.component.html',
   styleUrl: './user.component.scss'
 })
 export class UserComponent {
 
+  firestore: Firestore = inject(Firestore);
+
   user: User = new User();
 
   readonly dialog = inject(MatDialog);
   readonly userAdded = inject(MatDialog);
+
+  displayedColumns: string[] = ['firstName', 'lastName', 'birthDate', 'street', 'zipCode', 'city'];
+
+  users$: Observable<any[]>;
+
+  constructor() {
+    this.users$ = this.getData('users');
+  }
 
   openDialogAddUser(): void {
     const dialogRef = this.dialog.open(DialogAddUserComponent, {});
@@ -46,8 +62,14 @@ export class UserComponent {
   openDialogUserAdded(): void {
     const dialogRef = this.userAdded.open(DialogUserAddedComponent, {});
     setTimeout(() => {
-      dialogRef.close();      
+      dialogRef.close();
     }, 5000);
+  }
+
+  getData(data: string): Observable<any[]> {
+    const dataCollection = collection(this.firestore, data); //NOTE - Ich hole mir eine Collection aus Firestore.
+    return collectionData(dataCollection, { idField: 'id' });
+    //NOTE - Mit { idField: 'id' } wird die Firebase-Dokument-ID automatisch als Feld 'id' ins Ergebnisobjekt eingebunden.
   }
 
 }
