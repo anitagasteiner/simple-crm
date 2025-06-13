@@ -1,3 +1,14 @@
-<button class="pointer btn-add-user" mat-fab matTooltip="Add new user" [matTooltipPosition]="'above'" (click)="openDialogAddUser()">
+<mat-card appearance="outlined">
+    <mat-card-header>
+        <mat-card-title>Poodle</mat-card-title>
+        <mat-card-subtitle>Non-sporting group</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-actions align="end">
+        <button mat-button>Learn More</button>
+    </mat-card-actions>
+</mat-card>
+
+<button class="pointer btn-add-user" mat-fab matTooltip="Add new user" [matTooltipPosition]="'above'"
+    (click)="openDialogAddUser()">
     <mat-icon>person_add</mat-icon>
 </button>

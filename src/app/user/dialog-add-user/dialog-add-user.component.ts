@@ -31,13 +31,11 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 })
 export class DialogAddUserComponent {
 
-  user: User = new User();
-  birthDate: Date;
-
   firestore: Firestore = inject(Firestore);
   users$: Observable<any[]>;
 
-  readonly dialogRef = inject(MatDialogRef<DialogAddUserComponent>);
+  user: User = new User();
+  birthDate: Date;
 
   loading: boolean = false;
 
@@ -47,11 +45,7 @@ export class DialogAddUserComponent {
     this.users$ = collectionData(aCollection);
   }
 
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
-
-  async saveUser() {
+  async saveUser(): Promise<void> {
     this.user.birthDate = this.birthDate.getTime(); //NOTE - Variable wird hinzugefügt, aber mit Timestamp.
     this.loading = true;
     await this.addData('users', this.user.toJSON());

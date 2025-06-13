@@ -10,6 +10,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { DialogAddUserComponent } from './dialog-add-user/dialog-add-user.component';
 import { User } from '../../models/user.class';
 import { DialogUserAddedComponent } from './dialog-user-added/dialog-user-added.component';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
   selector: 'app-user',
@@ -20,7 +21,8 @@ import { DialogUserAddedComponent } from './dialog-user-added/dialog-user-added.
     MatDividerModule,
     MatFormFieldModule,
     MatInputModule,
-    FormsModule
+    FormsModule,
+    MatCardModule
   ],
   templateUrl: './user.component.html',
   styleUrl: './user.component.scss'
@@ -35,7 +37,6 @@ export class UserComponent {
   openDialogAddUser(): void {
     const dialogRef = this.dialog.open(DialogAddUserComponent, {});
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed.');
       if (result !== undefined) {
         this.openDialogUserAdded();
       }
