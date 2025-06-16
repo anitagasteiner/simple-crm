@@ -8,12 +8,16 @@
 }
 
 .logo-container {
-    // border-bottom: 1px solid grey;
-    padding-left: 16px;
-    padding-right: 16px;
-    min-height: 56px;
+    border-bottom: 3px solid rgba(139, 17, 139, 0.5);
     display: flex;
     align-items: center;
+    justify-content: flex-start;
+    gap: 4px;
+    font-size: 32px;
+    font-weight: 500;
+    >img {
+        height: 100px;
+    }
 }
 
 mat-toolbar, mat-toolbar-row {
