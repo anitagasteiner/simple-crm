@@ -6,6 +6,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { ActivatedRoute } from '@angular/router';
 import { User } from '../../../models/user.class';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-user-details',
@@ -13,7 +14,8 @@ import { User } from '../../../models/user.class';
     MatCardModule,
     MatButtonModule,
     DatePipe,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatIconModule
   ],
   templateUrl: './user-details.component.html',
   styleUrl: './user-details.component.scss'

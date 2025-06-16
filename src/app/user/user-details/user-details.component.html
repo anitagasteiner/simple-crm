@@ -1,14 +1,16 @@
 <mat-card appearance="outlined">
 
     @if (loading) {
-        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
     }
 
     <mat-card-header>
 
-        <div mat-card-avatar class="example-header-image"></div>
-        <mat-card-title>{{ user.firstName }} {{ user.lastName }} </mat-card-title>
-        <mat-card-subtitle>{{ user.city }}</mat-card-subtitle>
+                <div mat-card-avatar class="header-image"></div>
+                <mat-card-title>{{ user.firstName }} {{ user.lastName }} </mat-card-title>
+                <mat-card-subtitle>{{ user.city }}</mat-card-subtitle>
+
+                <mat-icon>more_vert</mat-icon>
 
     </mat-card-header>
 
