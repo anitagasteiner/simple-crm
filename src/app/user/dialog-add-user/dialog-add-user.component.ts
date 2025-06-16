@@ -39,7 +39,7 @@ export class DialogAddUserComponent {
 
   loading: boolean = false;
 
-  constructor(private ngZone: NgZone) {
+  constructor(public dialogRef: MatDialogRef<DialogAddUserComponent>, private ngZone: NgZone) {
     this.birthDate = new Date();
     const aCollection = collection(this.firestore, 'users');
     this.users$ = collectionData(aCollection);
