@@ -15,6 +15,7 @@ import { MatTableModule } from '@angular/material/table';
 import { collection, collectionData, Firestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { DatePipe, } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-user',
@@ -28,7 +29,8 @@ import { DatePipe, } from '@angular/common';
     FormsModule,
     MatCardModule,
     MatTableModule,
-    DatePipe
+    DatePipe,
+    RouterLink
   ],
   templateUrl: './user.component.html',
   styleUrl: './user.component.scss'
@@ -45,6 +47,8 @@ export class UserComponent {
   displayedColumns: string[] = ['name', 'birthDate', 'street', 'zipCode', 'city'];
 
   users$: Observable<any[]>;
+
+  selectedUser: any = null;
 
   constructor() {
     this.users$ = this.getData('users');
