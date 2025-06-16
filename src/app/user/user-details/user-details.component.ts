@@ -5,6 +5,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { ActivatedRoute } from '@angular/router';
+import { User } from '../../../models/user.class';
 
 @Component({
   selector: 'app-user-details',
@@ -24,7 +25,7 @@ export class UserDetailsComponent {
   private route = inject(ActivatedRoute);
   id!: string;
 
-  user: any = {};
+  user: User = new User();
 
   loading: boolean = false;
 
@@ -40,9 +41,9 @@ export class UserDetailsComponent {
   async getUser() {
     this.loading = true;
     const userDocRef = doc(this.firestore, 'users', this.id);
-    const userSnap = await  getDoc(userDocRef);
+    const userSnap = await getDoc(userDocRef);
     if (userSnap) {
-      this.user = userSnap.data();
+      this.user = new User(userSnap.data());
       this.loading = false;
     } else {
       console.error('No user found with ID: ', this.id);
