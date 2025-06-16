@@ -1,22 +1,20 @@
-<mat-card class="example-card" appearance="outlined">
+<mat-card appearance="outlined">
+    
     <mat-card-header>
+
         <div mat-card-avatar class="example-header-image"></div>
-        <mat-card-title>NAME</mat-card-title>
-        <mat-card-subtitle>CITY</mat-card-subtitle>
+        <mat-card-title>{{ user.firstName }} {{ user.lastName }} </mat-card-title>
+        <mat-card-subtitle>{{ user.city }}</mat-card-subtitle>
+
     </mat-card-header>
 
     <mat-card-content>
-
         <p>
-            <b>Address: </b>
+            <b>Address: </b> {{ user.street }}, {{ user.zipCode }} {{ user.city }}
         </p>
         <p>
-            <b>Birth Date: </b>
+            <b>Birth Date: </b> {{ user.birthDate | date:'d MMM y' }}
         </p>
-
     </mat-card-content>
-    <!-- <mat-card-actions>
-        <button mat-button>LIKE</button>
-        <button mat-button>SHARE</button>
-    </mat-card-actions> -->
+
 </mat-card>

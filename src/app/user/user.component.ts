@@ -48,8 +48,6 @@ export class UserComponent {
 
   users$: Observable<any[]>;
 
-  selectedUser: any = null;
-
   constructor() {
     this.users$ = this.getData('users');
   }

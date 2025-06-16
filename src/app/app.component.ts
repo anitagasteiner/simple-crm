@@ -6,8 +6,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatDividerModule } from '@angular/material/divider';
-// import { AsyncPipe } from '@angular/common';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -20,7 +18,6 @@ import { Observable } from 'rxjs';
     MatButtonModule,
     MatTooltipModule,
     MatDividerModule
-    // AsyncPipe
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
