@@ -1,10 +1,11 @@
 <mat-card appearance="outlined">
-    <mat-card-header>
-        <mat-card-title>Users</mat-card-title>
-        <mat-card-subtitle>This is a list showing all users.</mat-card-subtitle>
-    </mat-card-header>
 
     @if (users$) {
+
+        <mat-card-header>
+            <mat-card-title>Users</mat-card-title>
+            <mat-card-subtitle>This is a list showing all users.</mat-card-subtitle>
+        </mat-card-header>
 
         <table mat-table [dataSource]="users$" class="mat-elevation-z8 demo-table">
 
@@ -20,7 +21,7 @@
 
             <ng-container matColumnDef="birthDate">
                 <th mat-header-cell *matHeaderCellDef> Birth Date </th>
-                <td mat-cell *matCellDef="let element"> 
+                <td mat-cell *matCellDef="let element">
                     {{ element.birthDate | date:'d MMM y' }}
                 </td>
             </ng-container>
@@ -45,11 +46,10 @@
 
         </table>
 
+    } @else {
+        <div class="no-users">No users added yet.<br><br>To add a new user, click the button below.</div>
     }
 
-    <mat-card-actions align="end">
-        <button mat-button>Learn More</button>
-    </mat-card-actions>
 </mat-card>
 
 <button class="pointer btn-add-user" mat-fab matTooltip="Add new user" [matTooltipPosition]="'above'"

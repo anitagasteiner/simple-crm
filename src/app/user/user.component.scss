@@ -1,5 +1,33 @@
+mat-card {
+    padding: 0 16px;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break:break-word;
+}
+
+.mat-mdc-row {
+    cursor: pointer;
+    &:hover {
+        background-color: rgba(139, 17, 139, 0.2);        
+    }
+    &:hover >td:first-child {
+        border-bottom-left-radius: 20%;
+    }
+    &:hover >td:last-child {
+        border-bottom-right-radius: 20%;
+    }
+    &:hover >td {
+        border: none;
+    }
+}
+
 .btn-add-user {
     position: absolute;
     right: 56px;
     bottom: 56px;
+}
+
+.no-users {
+    padding: 16px;
+    text-align: center;
 }
