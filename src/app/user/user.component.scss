@@ -11,10 +11,10 @@ mat-card {
         background-color: rgba(139, 17, 139, 0.2);        
     }
     &:hover >td:first-child {
-        border-bottom-left-radius: 20%;
+        border-bottom-left-radius: 10px;
     }
     &:hover >td:last-child {
-        border-bottom-right-radius: 20%;
+        border-bottom-right-radius: 10px;
     }
     &:hover >td {
         border: none;

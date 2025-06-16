@@ -42,7 +42,7 @@ export class UserComponent {
   readonly dialog = inject(MatDialog);
   readonly userAdded = inject(MatDialog);
 
-  displayedColumns: string[] = ['firstName', 'lastName', 'birthDate', 'street', 'zipCode', 'city'];
+  displayedColumns: string[] = ['name', 'birthDate', 'street', 'zipCode', 'city'];
 
   users$: Observable<any[]>;
 
