@@ -1,5 +1,9 @@
 <mat-card appearance="outlined">
-    
+
+    @if (loading) {
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    }
+
     <mat-card-header>
 
         <div mat-card-avatar class="example-header-image"></div>
@@ -10,10 +14,10 @@
 
     <mat-card-content>
         <p>
-            <b>Address: </b> {{ user.street }}, {{ user.zipCode }} {{ user.city }}
+            <span>Address: </span> {{ user.street }}, {{ user.zipCode }} {{ user.city }}
         </p>
         <p>
-            <b>Birth Date: </b> {{ user.birthDate | date:'d MMM y' }}
+            <span>Birth Date: </span> {{ user.birthDate | date:'d MMM y' }}
         </p>
     </mat-card-content>
 

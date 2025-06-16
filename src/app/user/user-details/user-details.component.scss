@@ -9,3 +9,9 @@ mat-card {
   background-image: url('/img/avatar.png');
   background-size: cover;
 }
+
+mat-card-content {
+    >p >span {
+        font-weight: 500;
+    }
+}

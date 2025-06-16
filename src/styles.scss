@@ -13,3 +13,10 @@ body {
 .pointer {
     cursor: pointer;
 }
+
+mat-progress-bar {
+    border-radius: 10px;
+    margin: 8px;
+    max-width: 90%;
+    align-self: center;
+}

@@ -3,6 +3,7 @@ import { Component, inject } from '@angular/core';
 import { doc, Firestore, getDoc } from '@angular/fire/firestore';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -10,7 +11,8 @@ import { ActivatedRoute } from '@angular/router';
   imports: [
     MatCardModule,
     MatButtonModule,
-    DatePipe
+    DatePipe,
+    MatProgressBarModule
   ],
   templateUrl: './user-details.component.html',
   styleUrl: './user-details.component.scss'
@@ -24,6 +26,8 @@ export class UserDetailsComponent {
 
   user: any = {};
 
+  loading: boolean = false;
+
   constructor() { }
 
   ngOnInit() {
@@ -34,10 +38,12 @@ export class UserDetailsComponent {
   }
 
   async getUser() {
+    this.loading = true;
     const userDocRef = doc(this.firestore, 'users', this.id);
     const userSnap = await  getDoc(userDocRef);
     if (userSnap) {
       this.user = userSnap.data();
+      this.loading = false;
     } else {
       console.error('No user found with ID: ', this.id);
     }
