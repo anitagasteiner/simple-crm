@@ -14,7 +14,6 @@ import { MatCardModule } from '@angular/material/card';
 import { MatTableModule } from '@angular/material/table';
 import { collection, collectionData, Firestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
-import { DatePipe, } from '@angular/common';
 import { RouterLink } from '@angular/router';
 
 @Component({
@@ -29,7 +28,6 @@ import { RouterLink } from '@angular/router';
     FormsModule,
     MatCardModule,
     MatTableModule,
-    DatePipe,
     RouterLink
   ],
   templateUrl: './user.component.html',
@@ -44,7 +42,7 @@ export class UserComponent {
   readonly dialog = inject(MatDialog);
   readonly userAdded = inject(MatDialog);
 
-  displayedColumns: string[] = ['name', 'birthDate', 'street', 'zipCode', 'city'];
+  displayedColumns: string[] = ['name', 'city'];
 
   users$: Observable<any[]>;
 

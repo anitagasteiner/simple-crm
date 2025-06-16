@@ -14,23 +14,6 @@
                 <td mat-cell *matCellDef="let element"> {{ element.firstName }} {{ element.lastName }}</td>
             </ng-container>
 
-            <ng-container matColumnDef="birthDate">
-                <th mat-header-cell *matHeaderCellDef> Birth Date </th>
-                <td mat-cell *matCellDef="let element">
-                    {{ element.birthDate | date:'d MMM y' }}
-                </td>
-            </ng-container>
-
-            <ng-container matColumnDef="street">
-                <th mat-header-cell *matHeaderCellDef> Street </th>
-                <td mat-cell *matCellDef="let element"> {{element.street}} </td>
-            </ng-container>
-
-            <ng-container matColumnDef="zipCode">
-                <th mat-header-cell *matHeaderCellDef> ZIP Code </th>
-                <td mat-cell *matCellDef="let element"> {{element.zipCode}} </td>
-            </ng-container>
-
             <ng-container matColumnDef="city">
                 <th mat-header-cell *matHeaderCellDef> City </th>
                 <td mat-cell *matCellDef="let element"> {{element.city}} </td>
