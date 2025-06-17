@@ -24,7 +24,7 @@
             <mat-icon>more_vert</mat-icon>
         </button>
         <mat-menu #addressMenu="matMenu">
-            <button mat-menu-item (click)="openEditAddressForm()">Edit</button>
+            <button mat-menu-item (click)="openDialogEditAddress()">Edit</button>
         </mat-menu>
         <p>
             <span>Address: </span> {{ user.street }}, {{ user.zipCode }} {{ user.city }}

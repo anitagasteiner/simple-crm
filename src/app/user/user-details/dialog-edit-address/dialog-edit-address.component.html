@@ -1,0 +1,38 @@
+@if (loading) {
+  <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+}
+
+<h2 mat-dialog-title>Edit Address</h2>
+
+<mat-dialog-content>
+
+    <mat-form-field>
+      <mat-label>Street + number</mat-label>
+      <input matInput [(ngModel)]="user.street">
+    </mat-form-field>
+
+    <div class="city">
+
+      <mat-form-field>
+        <mat-label>ZIP-Code</mat-label>
+        <input matInput [(ngModel)]="user.zipCode">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>City</mat-label>
+        <input matInput [(ngModel)]="user.city">
+      </mat-form-field>
+
+    </div>
+
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close (click)="dialogRef.close()">Cancel</button>
+  <!-- The mat-dialog-close directive optionally accepts a value as a result for the dialog. -->
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="saveChanges()">Save</button>
+</mat-dialog-actions>
+
+@if (loading) {
+  <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+}

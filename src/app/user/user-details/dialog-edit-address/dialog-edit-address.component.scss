@@ -1,0 +1,10 @@
+mat-dialog-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.city {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+}
