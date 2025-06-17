@@ -69,8 +69,10 @@ export class UserDetailsComponent {
     });
   }
 
-  openDialogEditAddress(): void {
-    const dialogRef = this.dialog.open(DialogEditAddressComponent, {});
+  openDialogEditAddress(user: User): void {
+    const dialogRef = this.dialog.open(DialogEditAddressComponent, {
+      data: user
+    });
     dialogRef.afterClosed().subscribe(result => {
       if (result !== undefined) {
         // this.openDialogUserEdited();

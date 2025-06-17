@@ -1,13 +1,13 @@
 import { Component, inject } from '@angular/core';
-import { Firestore } from '@angular/fire/firestore';
+// import { Firestore } from '@angular/fire/firestore';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 // import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatDialogActions, MatDialogClose, MatDialogContent, MatDialogRef, MatDialogTitle } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogActions, MatDialogClose, MatDialogContent, MatDialogRef, MatDialogTitle } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
-import { User } from '../../../../models/user.class';
+// import { User } from '../../../../models/user.class';
 
 @Component({
   selector: 'app-dialog-edit-user',
@@ -28,9 +28,11 @@ import { User } from '../../../../models/user.class';
 })
 export class DialogEditUserComponent {
 
-  firestore: Firestore = inject(Firestore);
+  // firestore: Firestore = inject(Firestore);
 
-  user: User = new User();
+  // user: User = new User();
+
+  user = inject(MAT_DIALOG_DATA); 
 
   loading: boolean = false;
 
