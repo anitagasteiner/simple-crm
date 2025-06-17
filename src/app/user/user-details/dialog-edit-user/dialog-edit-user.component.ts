@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { Firestore } from '@angular/fire/firestore';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
-import { MatDatepickerModule } from '@angular/material/datepicker';
+// import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatDialogActions, MatDialogClose, MatDialogContent, MatDialogRef, MatDialogTitle } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -20,7 +20,7 @@ import { User } from '../../../../models/user.class';
     MatDialogContent,
     MatDialogActions,
     MatDialogClose,
-    MatDatepickerModule,
+    // MatDatepickerModule,
     MatProgressBarModule
   ],
   templateUrl: './dialog-edit-user.component.html',
