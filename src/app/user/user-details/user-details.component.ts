@@ -61,12 +61,16 @@ export class UserDetailsComponent {
 
   openDialogEditUser(user: User): void {
     const dialogRef = this.dialog.open(DialogEditUserComponent, {
-      data: user
+      data: {
+        user: user,
+        userId: this.id
+      }
     });
     dialogRef.afterClosed().subscribe(result => {
       if (result !== undefined) {
         // this.openDialogUserEdited();
         console.log('User successfully edited.');
+        this.getUser(); //NOTE - optional: reload updated user
       }
     });
   }

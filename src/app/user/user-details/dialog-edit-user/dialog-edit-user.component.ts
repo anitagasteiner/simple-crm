@@ -6,6 +6,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { User } from '../../../../models/user.class';
+import { doc, Firestore, updateDoc } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-dialog-edit-user',
@@ -18,14 +19,15 @@ import { User } from '../../../../models/user.class';
     MatDialogTitle,
     MatDialogContent,
     MatDialogActions,
-    MatDialogClose    
+    MatDialogClose
   ],
   templateUrl: './dialog-edit-user.component.html',
   styleUrl: './dialog-edit-user.component.scss'
 })
 export class DialogEditUserComponent {
 
-  private data = inject(MAT_DIALOG_DATA) as User;
+  private data = inject(MAT_DIALOG_DATA) as { user: User; userId: string };
+  private firestore = inject(Firestore);
 
   form: FormGroup;
 
@@ -33,16 +35,30 @@ export class DialogEditUserComponent {
 
   constructor(private fb: FormBuilder, public dialogRef: MatDialogRef<DialogEditUserComponent>) {
     this.form = this.fb.group({
-      firstName: [this.data.firstName],
-      lastName: [this.data.lastName]
+      firstName: [this.data.user.firstName],
+      lastName: [this.data.user.lastName]
     });
   }
 
-  saveChanges() {
-    if (this.form.valid) {
-      const updateUser = this.form.value;
-      this.dialogRef.close(updateUser); //NOTE - Rückgabe an aufrufende Komponente
+  async saveChanges() {
+    if (this.form.invalid) {
+      return;
     }
+    this.loading = true;
+    try {
+      await this.updateUserData(this.data.userId, this.form.value);
+      this.dialogRef.close(this.form.value); //NOTE - optional: Rückgabe an aufrufende Komponente
+    } catch (error) {
+      console.error('Fehler beim Speichern: ', error);
+      // ev. Fehleranzeige
+    } finally {
+      this.loading = false;
+    }
+  }
+
+  updateUserData(userId: string, data: Partial<User>) {
+    const userDocRef = doc(this.firestore, `users/${userId}`);
+    return updateDoc(userDocRef, data);
   }
 
 }
