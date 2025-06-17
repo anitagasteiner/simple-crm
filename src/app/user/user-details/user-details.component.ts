@@ -7,9 +7,10 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { ActivatedRoute } from '@angular/router';
 import { User } from '../../../models/user.class';
 import { MatIconModule } from '@angular/material/icon';
-import {MatMenuModule} from '@angular/material/menu';
+import { MatMenuModule } from '@angular/material/menu';
 import { DialogEditAddressComponent } from './dialog-edit-address/dialog-edit-address.component';
 import { MatDialog } from '@angular/material/dialog';
+import { DialogEditUserComponent } from './dialog-edit-user/dialog-edit-user.component';
 
 @Component({
   selector: 'app-user-details',
@@ -58,18 +59,24 @@ export class UserDetailsComponent {
     }
   }
 
-  openMainEditForm() {
-
+  openDialogEditUser() {
+    const dialogRef = this.dialog.open(DialogEditUserComponent, {});
+    dialogRef.afterClosed().subscribe(result => {
+      if (result !== undefined) {
+        // this.openDialogUserEdited();
+        console.log('User successfully edited.');
+      }
+    });
   }
 
   openDialogEditAddress(): void {
-      const dialogRef = this.dialog.open(DialogEditAddressComponent, {});
-      dialogRef.afterClosed().subscribe(result => {
-        if (result !== undefined) {
-          // this.openDialogUserEdited();
-          console.log('User successfully edited.');
-        }
-      });
+    const dialogRef = this.dialog.open(DialogEditAddressComponent, {});
+    dialogRef.afterClosed().subscribe(result => {
+      if (result !== undefined) {
+        // this.openDialogUserEdited();
+        console.log('Address successfully edited.');
+      }
+    });
   }
 
 }
