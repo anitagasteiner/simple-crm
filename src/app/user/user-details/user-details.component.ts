@@ -7,6 +7,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { ActivatedRoute } from '@angular/router';
 import { User } from '../../../models/user.class';
 import { MatIconModule } from '@angular/material/icon';
+import {MatMenuModule} from '@angular/material/menu';
 
 @Component({
   selector: 'app-user-details',
@@ -15,7 +16,8 @@ import { MatIconModule } from '@angular/material/icon';
     MatButtonModule,
     DatePipe,
     MatProgressBarModule,
-    MatIconModule
+    MatIconModule,
+    MatMenuModule
   ],
   templateUrl: './user-details.component.html',
   styleUrl: './user-details.component.scss'
@@ -50,6 +52,14 @@ export class UserDetailsComponent {
     } else {
       console.error('No user found with ID: ', this.id);
     }
+  }
+
+  openMainEditForm() {
+
+  }
+
+  openEditAddressForm() {
+
   }
 
 }

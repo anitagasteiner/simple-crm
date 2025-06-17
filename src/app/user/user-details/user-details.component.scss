@@ -5,6 +5,10 @@ mat-card {
     word-break:break-word;
 }
 
+mat-card-header {
+    position: relative;
+}
+
 .header-image {
   background-image: url('/img/avatar.png');
   background-size: cover;
@@ -17,6 +21,7 @@ mat-card {
 }
 
 mat-card-content {
+    position: relative;
     >p >span {
         font-weight: 500;
     }
