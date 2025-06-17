@@ -1,45 +1,48 @@
 import { Component, inject } from '@angular/core';
-// import { Firestore } from '@angular/fire/firestore';
-import { FormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
-// import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MAT_DIALOG_DATA, MatDialogActions, MatDialogClose, MatDialogContent, MatDialogRef, MatDialogTitle } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
-// import { User } from '../../../../models/user.class';
+import { User } from '../../../../models/user.class';
 
 @Component({
   selector: 'app-dialog-edit-user',
   imports: [
+    MatProgressBarModule,
+    ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
-    FormsModule,
     MatButtonModule,
     MatDialogTitle,
     MatDialogContent,
     MatDialogActions,
-    MatDialogClose,
-    // MatDatepickerModule,
-    MatProgressBarModule
+    MatDialogClose    
   ],
   templateUrl: './dialog-edit-user.component.html',
   styleUrl: './dialog-edit-user.component.scss'
 })
 export class DialogEditUserComponent {
 
-  // firestore: Firestore = inject(Firestore);
+  private data = inject(MAT_DIALOG_DATA) as User;
 
-  // user: User = new User();
-
-  user = inject(MAT_DIALOG_DATA); 
+  form: FormGroup;
 
   loading: boolean = false;
 
-  constructor(public dialogRef: MatDialogRef<DialogEditUserComponent>) { }
+  constructor(private fb: FormBuilder, public dialogRef: MatDialogRef<DialogEditUserComponent>) {
+    this.form = this.fb.group({
+      firstName: [this.data.firstName],
+      lastName: [this.data.lastName]
+    });
+  }
 
   saveChanges() {
-
+    if (this.form.valid) {
+      const updateUser = this.form.value;
+      this.dialogRef.close(updateUser); //NOTE - Rückgabe an aufrufende Komponente
+    }
   }
 
 }

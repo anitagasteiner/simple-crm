@@ -25,15 +25,13 @@ import { User } from '../../../../models/user.class';
 })
 export class DialogEditAddressComponent {
 
-  private dialogRef = inject(MatDialogRef<DialogEditAddressComponent>);
-
   private data = inject(MAT_DIALOG_DATA) as User; 
 
   form: FormGroup;
 
   loading: boolean = false;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, public dialogRef: MatDialogRef<DialogEditAddressComponent>) {
     this.form = this.fb.group({
       street: [this.data.street],
       zipCode: [this.data.zipCode],

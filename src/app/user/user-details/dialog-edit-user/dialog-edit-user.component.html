@@ -4,16 +4,16 @@
 
 <h2 mat-dialog-title>Edit User</h2>
 
-<mat-dialog-content>
+<mat-dialog-content [formGroup]="form">
 
     <mat-form-field>
       <mat-label>First name</mat-label>
-      <input [disabled]="loading" matInput [(ngModel)]="user.firstName">
+      <input matInput formControlName="firstName">
     </mat-form-field>
 
     <mat-form-field>
       <mat-label>Last name</mat-label>
-      <input matInput [(ngModel)]="user.lastName">
+      <input matInput formControlName="lastName">
     </mat-form-field>
 
   <!-- <mat-form-field>

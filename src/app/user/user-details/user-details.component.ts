@@ -59,8 +59,10 @@ export class UserDetailsComponent {
     }
   }
 
-  openDialogEditUser() {
-    const dialogRef = this.dialog.open(DialogEditUserComponent, {});
+  openDialogEditUser(user: User): void {
+    const dialogRef = this.dialog.open(DialogEditUserComponent, {
+      data: user
+    });
     dialogRef.afterClosed().subscribe(result => {
       if (result !== undefined) {
         // this.openDialogUserEdited();
@@ -70,7 +72,7 @@ export class UserDetailsComponent {
   }
 
   openDialogEditAddress(user: User): void {
-    const dialogRef = this.dialog.open(DialogEditAddressComponent, {
+    const dialogRef = this.dialog.open(DialogEditAddressComponent, { //NOTE - Da ich diese Variable niemals ändern werde, verwende ich nicht "let", sondern "const".
       data: user
     });
     dialogRef.afterClosed().subscribe(result => {
