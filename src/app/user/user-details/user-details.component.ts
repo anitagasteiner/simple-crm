@@ -70,19 +70,23 @@ export class UserDetailsComponent {
       if (result !== undefined) {
         // this.openDialogUserEdited();
         console.log('User successfully edited.');
-        this.getUser(); //NOTE - optional: reload updated user
+        this.getUser();
       }
     });
   }
 
   openDialogEditAddress(user: User): void {
     const dialogRef = this.dialog.open(DialogEditAddressComponent, { //NOTE - Da ich diese Variable niemals ändern werde, verwende ich nicht "let", sondern "const".
-      data: user
+      data: {
+        user: user,
+        userId: this.id
+      }
     });
     dialogRef.afterClosed().subscribe(result => {
       if (result !== undefined) {
         // this.openDialogUserEdited();
         console.log('Address successfully edited.');
+        this.getUser(); //NOTE - optional: reload updated user
       }
     });
   }

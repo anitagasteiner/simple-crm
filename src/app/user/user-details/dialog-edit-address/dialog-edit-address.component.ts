@@ -6,6 +6,7 @@ import { MatInputModule } from '@angular/material/input';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { User } from '../../../../models/user.class';
+import { doc, Firestore, updateDoc } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-dialog-edit-address',
@@ -25,7 +26,8 @@ import { User } from '../../../../models/user.class';
 })
 export class DialogEditAddressComponent {
 
-  private data = inject(MAT_DIALOG_DATA) as User; 
+  private data = inject(MAT_DIALOG_DATA) as { user: User; userId: string };
+  private firestore = inject(Firestore);
 
   form: FormGroup;
 
@@ -33,17 +35,31 @@ export class DialogEditAddressComponent {
 
   constructor(private fb: FormBuilder, public dialogRef: MatDialogRef<DialogEditAddressComponent>) {
     this.form = this.fb.group({
-      street: [this.data.street],
-      zipCode: [this.data.zipCode],
-      city: [this.data.city]
+      street: [this.data.user.street],
+      zipCode: [this.data.user.zipCode],
+      city: [this.data.user.city]
     });
   }
 
-  saveChanges() {
-    if (this.form.valid) {
-      const updateAddress = this.form.value;
-      this.dialogRef.close(updateAddress); //NOTE - Rückgabe an aufrufende Komponente
+  async saveChanges() {
+    if (this.form.invalid) {
+      return;
     }
-  }  
+    this.loading = true;
+    try {
+      await this.updateUserAddress(this.data.userId, this.form.value);
+      this.dialogRef.close(this.form.value);
+    } catch (error) {
+      console.error('Fehler beim Speichern: ', error);
+      // ev. Fehleranzeige 
+    } finally {
+      this.loading = false;
+    }
+  }
+
+  updateUserAddress(userId: string, data: Partial<User>) {
+    const userDocRef = doc(this.firestore, `users/${userId}`);
+    return updateDoc(userDocRef, data);
+  }
 
 }
