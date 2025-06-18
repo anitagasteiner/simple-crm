@@ -15,6 +15,7 @@ import { MatTableModule } from '@angular/material/table';
 import { collection, collectionData, Firestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { RouterLink } from '@angular/router';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 @Component({
   selector: 'app-user',
@@ -28,7 +29,8 @@ import { RouterLink } from '@angular/router';
     FormsModule,
     MatCardModule,
     MatTableModule,
-    RouterLink
+    RouterLink,
+    MatProgressBarModule
   ],
   templateUrl: './user.component.html',
   styleUrl: './user.component.scss'
@@ -66,9 +68,9 @@ export class UserComponent {
     }, 5000);
   }
 
-  getData(data: string): Observable<any[]> {
-    const dataCollection = collection(this.firestore, data); //NOTE - Ich hole mir eine Collection aus Firestore.
-    return collectionData(dataCollection, { idField: 'id' });
+  getData(data: string): Observable<any[]> {    
+    const dataCollection = collection(this.firestore, data); //NOTE - Ich hole mir eine Collection aus Firestore.    
+    return collectionData(dataCollection, { idField: 'id' });    
     //NOTE - Mit { idField: 'id' } wird die Firebase-Dokument-ID automatisch als Feld 'id' ins Ergebnisobjekt eingebunden.
   }
 
